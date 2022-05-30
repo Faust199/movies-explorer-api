@@ -23,6 +23,8 @@ const allowedCors = [
   'http://praktikum.tk',
   'https://polnikita.students.nomoredomains.xyz',
   'http://polnikita.students.nomoredomains.xyz',
+  'https://diplom.polnikita.nomoredomains.sbs',
+  'http://diplom.polnikita.nomoredomains.sbs',
   'http://localhost:3000',
   'http://localhost:3001',
 ];
