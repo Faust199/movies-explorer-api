@@ -12,7 +12,7 @@ router.patch('/me', celebrate({
     name: Joi.string().min(2).max(30),
     email: Joi.string().custom((value) => {
       if (!validator.isEmail(value)) {
-        throw new Error('Неправильный формат ссылки')
+        throw new Error('Неправильный формат ссылки');
       }
       return value;
     }).required(),
