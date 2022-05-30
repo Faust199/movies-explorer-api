@@ -1,0 +1,39 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Diplom project",
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "npx eslint ."
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "celebrate": "^15.0.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "validator": "^13.7.0",
+    "winston": "^3.7.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Faust199/movies-explorer-api.git"
+  },
+  "author": "Nikita Polezhaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Faust199/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/Faust199/movies-explorer-api#readme"
+}
