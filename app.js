@@ -2,15 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { errors, celebrate, Joi } = require('celebrate');
+const { errors } = require('celebrate');
 const auth = require('./middlewares/auth');
-const { createUser, login } = require('./controllers/users');
 const ObjectNotExistError = require('./errors/objectNotExistError');
 const errorHandler = require('./errors/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-const USER_PATH = '/users';
-const MOVIE_PATH = '/movies';
 
 const { PORT = 3000 } = process.env;
 
@@ -68,24 +64,12 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  }),
-}), login);
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-    name: Joi.string().min(2).max(30),
-  }),
-}), createUser);
+app.use(require('./routes/sign'));
 
 app.use(auth);
 
-app.use(USER_PATH, require('./routes/users'));
-app.use(MOVIE_PATH, require('./routes/movies'));
+app.use(require('./routes/users'));
+app.use(require('./routes/movies'));
 
 app.use(() => {
   throw new ObjectNotExistError('такой url не найден');

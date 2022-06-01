@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const UserError = require('../errors/userError');
 require('dotenv').config();
 
-// eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   const token = req.headers.authorization.replace('Bearer ', '');
   let payload;

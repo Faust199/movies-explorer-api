@@ -73,6 +73,9 @@ module.exports.updateUserProfile = (req, res, next) => {
   User.findByIdAndUpdate({ _id: req.user._id }, { name, email }, { runValidators: true, new: true })
     .then((user) => res.send({ user }))
     .catch((err) => {
+      if (err.code === 11000) {
+        next(new DataBaseError(err.message));
+      }
       errorHandler(err, next);
     });
 };

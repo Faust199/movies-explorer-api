@@ -14,7 +14,8 @@ function errorHandler(err, next) {
 }
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
+  const owner = req.user._id;
+  Movie.find({ owner })
     .populate(MOVIE_OWNER)
     .then((movies) => res.send({ movies }))
     .catch((err) => {
